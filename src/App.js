@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Messages from "./Messages";
 import Input from "./Input";
+import { publicDecrypt } from 'crypto';
 
 function randomName() {
   const adjectives = [
@@ -26,10 +27,52 @@ function randomName() {
     "wood", "dream", "cherry", "tree", "fog", "frost", "voice", "paper", "frog",
     "smoke", "star"
   ];
-  const adjective = adjectives[Math.floor(Math.random() * adjectives.length)];
+  
+  /*const adjective = adjectives[Math.floor(Math.random() * adjectives.length)];
   const noun = nouns[Math.floor(Math.random() * nouns.length)];
-  return adjective + noun;
+  return adjective + noun;*/
+
+
+  const names = ["Vinod","Arjun","Muna"];
+
+  const noun = names[Math.floor(Math.random() * names.length)];
+  return noun;
+  
 }
+
+function userName(){
+
+  var name = "NoName";
+
+
+  var localIpV4Address = require("local-ipv4-address");
+  localIpV4Address().then(function(ipAddress){
+    console.log("My IP address is " + ipAddress);
+    // My IP address is 10.4.4.137
+});
+
+localIpV4Address().then(function(ipAddress){
+  alert(ipAddress);
+
+   console.log("My IP address is " + ipAddress);
+});
+ 
+
+
+
+  if(localIpV4Address === "192.168.1.185") 
+      name = "Vinod";
+  else if(localIpV4Address === "192.168.1.151")
+      name = "Arjun";
+    else if(localIpV4Address === "192.168.1.92")
+      name = "Muna";
+
+  return name;
+}
+
+// Vinod:192.168.1.185
+//Arjun:192.168.1.151
+//Muna:192.168.1.92
 
 function randomColor() {
   return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
